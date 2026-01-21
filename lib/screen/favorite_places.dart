@@ -18,6 +18,8 @@ class FavoritePlaces extends StatefulWidget {
 }
 
 class _FavoritePlacesState extends State<FavoritePlaces> {
+  Place? lastPlace;
+
   void openNewPlace() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -69,8 +71,14 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     downloadPlaces();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //downloadPlaces();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Luoghi preferiti"),
@@ -87,6 +95,22 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
                 return Dismissible(
                   key: ValueKey(list[idx].id),
                   onDismissed: (direction) {
+                    lastPlace = list[idx];
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Luogo rimosso"),
+                        action: SnackBarAction(
+                          label: 'Annulla',
+                          onPressed: () {
+                            Provider.of<PlaceProvider>(
+                              context,
+                              listen: false,
+                            ).savePlace(lastPlace!, false);
+                          },
+                        ),
+                      ),
+                    );
                     return removeItem(list[idx].id);
                   },
                   child: ListItem(

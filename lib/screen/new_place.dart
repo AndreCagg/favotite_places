@@ -8,9 +8,6 @@ import "package:provider/provider.dart";
 import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import "package:favorite_places/model/custom_location.dart";
-import "package:http/http.dart" as http;
-import 'package:path_provider/path_provider.dart' as pp;
-import 'package:path/path.dart' as path;
 
 class NewPlace extends StatefulWidget {
   const NewPlace({super.key});
@@ -38,9 +35,9 @@ class _NewPlaceState extends State<NewPlace> {
           img_to_show!,
           CustomLocation(latitudine!, longitudine!),
         );
-        Provider.of<PlaceProvider>(context, listen: false).addPlace(p);
+        //Provider.of<PlaceProvider>(context, listen: false).addPlace(p);
 
-        Directory appDir = await pp.getApplicationDocumentsDirectory();
+        /*Directory appDir = await pp.getApplicationDocumentsDirectory();
         String filename = path.basename(img_to_show!.path);
         File newFile = await img_to_show!.copy("${appDir.path}/$filename");
 
@@ -57,7 +54,8 @@ class _NewPlaceState extends State<NewPlace> {
             "file": newFile.path,
             "location": {"latitudine": latitudine, "longitudine": longitudine},
           }),
-        );
+        );*/
+        Provider.of<PlaceProvider>(context, listen: false).savePlace(p, true);
 
         Navigator.of(context).pop();
       } else {
