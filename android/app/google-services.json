@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1001004256781",
+    "firebase_url": "https://place-937c1-default-rtdb.firebaseio.com",
+    "project_id": "place-937c1",
+    "storage_bucket": "place-937c1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001004256781:android:101444a1ec19e2c1cf8f44",
+        "android_client_info": {
+          "package_name": "com.example.favorite_places"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRZ6tLxiSEWSipvCX-nFpDePWLV6-6OcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
